@@ -23,17 +23,22 @@ struct ContentView: View {
                             .scaledToFit()
                             .frame(width: 300, height: 300)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .border(Color.black, width: 10)
                     case .failure:
-                        Image(systemName: "xmark.octagon")
+                        Image(systemName: "cat")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
-                            .foregroundColor(.red)
+                            .foregroundColor(.gray)
                     @unknown default:
                         EmptyView()
                     }
                 }
                 Text(fact)
+                    .foregroundStyle(Color.blue)
+                    .background(Color.gray.opacity(0.4))
+                    .border(Color.orange, width: 2)
+                    .cornerRadius(5)
             }
             .navigationTitle("Cat Facts and Photos")
             .toolbar {
@@ -47,6 +52,10 @@ struct ContentView: View {
                     }
                 }
             }
+        Image("Paw")
+            .resizable()
+            .frame(width: 400, height: 150)
+
             .task {
                 await loadFacts()
             }
